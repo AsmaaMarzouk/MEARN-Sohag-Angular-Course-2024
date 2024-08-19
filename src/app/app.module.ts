@@ -7,6 +7,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { MainHomeComponent } from './Components/main-home/main-home.component';
+import { ProductsListComponent } from './Components/products-list/products-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +17,13 @@ import { MainHomeComponent } from './Components/main-home/main-home.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    MainHomeComponent
+    MainHomeComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   // بداية

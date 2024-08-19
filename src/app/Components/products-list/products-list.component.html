@@ -1,0 +1,80 @@
+<!-- <h1>Product Name: {{product1.name}}</h1>
+<h2>Price: {{product1.price}}</h2> -->
+
+<!-- <h1>First Product</h1>
+<h2>Name: {{productsList[0].name}}</h2>
+<h2>Name: {{productsList[1].name}}</h2> -->
+
+
+<!-- @for(i of arrayName){htmlElement } -->
+<!-- for of  -->
+
+<button class="btn btn-primary mb-2" (click)="toggleImg()">{{showOrhideImg?'Hide':'Show'}} Image</button>
+
+<!-- <input type="text" name="user" id="user" [value]="userName"> -->
+<!-- <input type="text" name="user" id="user" [(ngModel)]="userName">
+<h4>{{userName}}</h4> -->
+<div class="row mb-3">
+  <label for="filter" class="form-label">Filter By Name:</label>
+  <input type="text" name="filter" id="filter" [(ngModel)]="filterByName" class="form-control">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row ">
+  <!-- @for(product of productsList;track product.id){ -->
+  @for(product of ProductsAfetrFilter;track product.id){
+  <!-- <h1>{{product.name}}</h1>
+  <h2>{{product.price}}</h2> -->
+  <div class="col-md-4 mb-3">
+
+    <!-- <img src="{{product.PrdimgURL}}" class="img-fluid"> -->
+
+    <!-- @if(condition){} => true (show in dom) , false (hide in dom) -->
+    @if(showOrhideImg){
+    <img [src]="product.PrdimgURL" class="img-fluid">
+    }
+    <h3>{{product.name}}</h3>
+    <h3>{{product.price}}</h3>
+
+    <h4 class="text-primary">
+      @switch (product.categoryID) {
+      @case (1) {Tables}
+      @case (2) {Chairs}
+      @default {TV Unit}
+      }
+    </h4>
+
+    @if(product.quantity==0){
+      <p class="text-danger">Out Of Stock</p>
+    }
+    @else if (product.quantity==1) {
+      <p>Last one item</p>
+    }
+    @else if (product.quantity==2) {
+      <p>Last two item</p>
+    }
+    @else {
+      <p>In stock {{product.quantity}}</p>
+    }
+    <!-- <button class="btn btn-danger" [hidden]="product.quantity==0">Add To Cart <i class="fa-sharp fa-solid fa-cart-plus modifyIcon"></i></button> -->
+    <button class="btn btn-danger" [disabled]="product.quantity==0">Add To Cart <i
+        class="fa-sharp fa-solid fa-cart-plus modifyIcon"></i></button>
+  </div>
+
+  }
+</div>
